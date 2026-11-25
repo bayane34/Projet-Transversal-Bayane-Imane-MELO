@@ -1,0 +1,16 @@
+--Test 1
+--SELECT TABLE_NAME
+--FROM INFORMATION_SCHEMA.TABLES
+--WHERE TABLE_TYPE = 'BASE TABLE'
+--ORDER BY TABLE_NAME;
+
+--Test 2
+--SELECT
+    --Album.titre_album,
+    --Artiste.nom_artiste,
+    --Genre.nom_genre
+--FROM Album
+--INNER JOIN Artiste
+    --ON Album.id_artiste = Artiste.id_artiste
+--INNER JOIN Genre
+    --ON Album.id_genre = Genre.id_genre;
