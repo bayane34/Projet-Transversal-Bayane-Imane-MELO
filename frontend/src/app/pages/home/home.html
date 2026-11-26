@@ -1,0 +1,108 @@
+<section class="hero">
+    <div class="hero-content">
+
+        <span class="eyebrow">Votre univers musical</span>
+
+        <h1>
+            EXPLORE.<br>
+            DISCOVER.<br>
+            <span>SHARE.</span>
+        </h1>
+
+        <p>
+            Découvrez de nouveaux artistes, explorez leurs albums
+            et partagez votre passion pour la musique.
+        </p>
+
+        <a routerLink="/albums" class="btn-primary">
+            Explorer le catalogue →
+        </a>
+
+    </div>
+
+    <div class="vinyl" aria-hidden="true"></div>
+</section>
+
+@if (erreur()) {
+    <p class="error">{{ erreur() }}</p>
+}
+
+<section class="catalogue">
+
+    <div class="section-header">
+        <h2>Albums à découvrir</h2>
+        <a routerLink="/albums">Tout voir →</a>
+    </div>
+
+    <div class="cards">
+
+        @for (album of albums(); track album.id_album) {
+            <article class="music-card">
+
+                @if (album.pochette) {
+                    <img [src]="album.pochette"
+                         [alt]="album.titre_album"
+                         loading="lazy">
+                } @else {
+                    <div class="placeholder">♫</div>
+                }
+
+                <h3>{{ album.titre_album }}</h3>
+                <p>{{ album.nom_artiste }}</p>
+
+            </article>
+        }
+
+    </div>
+
+</section>
+
+<section class="catalogue">
+
+    <div class="section-header">
+        <h2>Artistes à découvrir</h2>
+        <a routerLink="/artistes">Tout voir →</a>
+    </div>
+
+    <div class="cards">
+
+        @for (artiste of artistes(); track artiste.id_artiste) {
+            <article class="music-card artist-card">
+
+                @if (artiste.photo_artiste) {
+                    <img [src]="artiste.photo_artiste"
+                         [alt]="artiste.nom_artiste"
+                         loading="lazy">
+                } @else {
+                    <div class="placeholder">♫</div>
+                }
+
+                <h3>{{ artiste.nom_artiste }}</h3>
+                <p>{{ artiste.pays }}</p>
+
+            </article>
+        }
+
+    </div>
+
+</section>
+
+<section class="community">
+    <span class="eyebrow">Rejoignez la communauté</span>
+
+    <h2>La musique, bien plus qu'une écoute.</h2>
+
+    <p>
+        Créez vos playlists, enregistrez vos favoris
+        et partagez vos avis avec la communauté MELO.
+    </p>
+
+    <a routerLink="/inscription" class="btn-primary">
+        Rejoindre MELO
+    </a>
+</section>
+
+<footer>
+    <span class="footer-logo">MELO.</span>
+    <p>© 2026 MELO — Tous droits réservés.</p>
+</footer>

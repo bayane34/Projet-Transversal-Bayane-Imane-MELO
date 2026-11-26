@@ -1,0 +1,82 @@
+<section class="page">
+
+    <div class="page-heading">
+
+        <span class="eyebrow">Le catalogue MELO</span>
+
+        <h1>Découvrez les <span>morceaux.</span></h1>
+
+        <p>
+            Retrouvez vos titres préférés et enrichissez
+            votre univers musical.
+        </p>
+
+    </div>
+
+    <input
+        type="search"
+        class="search"
+        placeholder="Rechercher un morceau, un artiste, un album..."
+        aria-label="Rechercher un morceau"
+        (input)="recherche.set($any($event.target).value)"
+    >
+
+    @if (chargement()) {
+        <p>Chargement des morceaux...</p>
+    } @else if (erreur()) {
+        <p class="error">{{ erreur() }}</p>
+    } @else {
+
+        <p class="results">
+            {{ morceauxFiltres().length }} morceau(x)
+        </p>
+
+        <div class="track-list">
+
+            <div class="track-header">
+                <span>#</span>
+                <span>Titre</span>
+                <span class="album-column">Album</span>
+                <span>Durée</span>
+            </div>
+
+            @for (morceau of morceauxFiltres();
+                  track morceau.id_morceau;
+                  let i = $index) {
+
+                <article class="track">
+
+                    <span class="track-number">
+                        {{ i + 1 }}
+                    </span>
+
+                    <div class="track-info">
+
+                        <div class="track-cover">♫</div>
+
+                        <div>
+                            <h2>{{ morceau.titre_morceau }}</h2>
+                            <p>{{ morceau.nom_artiste }}</p>
+                        </div>
+
+                    </div>
+
+                    <span class="album-column">
+                        {{ morceau.titre_album }}
+                    </span>
+
+                    <span class="duration">
+                        {{ formatDuree(morceau.duree) }}
+                    </span>
+
+                </article>
+
+            } @empty {
+                <p class="empty">Aucun morceau trouvé.</p>
+            }
+
+        </div>
+
+    }
+
+</section>

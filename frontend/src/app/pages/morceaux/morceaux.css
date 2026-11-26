@@ -1,0 +1,148 @@
+.page {
+    padding: 60px 8%;
+    min-height: 85vh;
+}
+
+.page-heading {
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    color: #ce8298;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(35px, 5vw, 65px);
+    letter-spacing: -2px;
+    margin: 15px 0;
+}
+
+h1 span {
+    color: #c65a79;
+}
+
+.page-heading p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.search {
+    width: 100%;
+    max-width: 550px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    margin-bottom: 25px;
+}
+
+.search:focus {
+    border-color: #c65a79;
+}
+
+.results {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.track-header,
+.track {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 2fr) minmax(0, 1fr) 70px;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 20px;
+}
+
+.track-header {
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+}
+
+.track {
+    border-bottom: 1px solid #252525;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.track:hover {
+    background: var(--surface);
+}
+
+.track-number,
+.album-column,
+.duration {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.track-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+.track-cover {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #401426, #181818);
+    border-radius: 6px;
+    color: #c65a79;
+    font-size: 25px;
+}
+
+.track-info h2 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.track-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.empty {
+    padding: 25px 20px;
+    color: var(--text-secondary);
+}
+
+.error {
+    color: #ff9aab;
+}
+
+@media (max-width: 650px) {
+    .page {
+        padding: 35px 6%;
+    }
+
+    .album-column {
+        display: none;
+    }
+
+    .track-header,
+    .track {
+        grid-template-columns: 20px minmax(0, 1fr) 45px;
+        gap: 10px;
+        padding: 12px 5px;
+    }
+
+    .track-cover {
+        width: 40px;
+        height: 40px;
+    }
+
+    .track-info h2 {
+        font-size: 14px;
+    }
+}

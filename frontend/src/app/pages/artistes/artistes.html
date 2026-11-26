@@ -1,0 +1,61 @@
+<section class="page">
+
+    <div class="page-heading">
+        <span class="eyebrow">Le catalogue MELO</span>
+
+        <h1>Découvrez les <span>artistes.</span></h1>
+
+        <p>
+            Explorez les univers musicaux
+            de vos artistes préférés.
+        </p>
+    </div>
+
+    <input
+        type="search"
+        class="search"
+        placeholder="Rechercher un artiste..."
+        aria-label="Rechercher un artiste"
+        (input)="recherche.set($any($event.target).value)"
+    >
+
+    @if (chargement()) {
+        <p>Chargement des artistes...</p>
+    } @else if (erreur()) {
+        <p class="error">{{ erreur() }}</p>
+    } @else {
+
+        <p class="results">
+            {{ artistesFiltres().length }} artiste(s)
+        </p>
+
+        <div class="cards">
+
+            @for (artiste of artistesFiltres();
+                  track artiste.id_artiste) {
+
+                <article class="artist-card">
+
+                    @if (artiste.photo_artiste) {
+                        <img
+                            [src]="artiste.photo_artiste"
+                            [alt]="artiste.nom_artiste"
+                            loading="lazy"
+                        >
+                    } @else {
+                        <div class="placeholder">♫</div>
+                    }
+
+                    <h2>{{ artiste.nom_artiste }}</h2>
+                    <p>{{ artiste.pays }}</p>
+
+                </article>
+
+            } @empty {
+                <p>Aucun artiste trouvé.</p>
+            }
+
+        </div>
+    }
+
+</section>

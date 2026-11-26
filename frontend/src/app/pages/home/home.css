@@ -1,0 +1,255 @@
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    padding: 80px 8%;
+    background: linear-gradient(
+        115deg,
+        #101010 25%,
+        #30101c 65%,
+        #801D38 130%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+}
+
+.eyebrow {
+    color: #ce8298;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 100px);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -3px;
+    margin: 25px 0;
+}
+
+.hero h1 span {
+    color: #c65a79;
+}
+
+.hero p {
+    color: var(--text-secondary);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 460px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #a92c50;
+}
+
+.vinyl {
+    position: absolute;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 520px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    opacity: 0.65;
+    background: repeating-radial-gradient(
+        circle,
+        #191919 0px,
+        #191919 4px,
+        #292929 5px,
+        #191919 7px
+    );
+    box-shadow: 0 0 70px #00000066;
+}
+
+.vinyl::after {
+    content: '';
+    position: absolute;
+    inset: 36%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #101010 0 6%,
+        #801D38 7% 100%
+    );
+}
+
+.catalogue {
+    padding: 50px 8%;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 27px;
+}
+
+.section-header a {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.section-header a:hover {
+    color: white;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.music-card {
+    background: var(--surface);
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.music-card:hover {
+    transform: translateY(-5px);
+    background: #292929;
+}
+
+.music-card img,
+.placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.placeholder {
+    display: grid;
+    place-items: center;
+    font-size: 55px;
+    color: #c65a79;
+    background: linear-gradient(135deg, #30101c, #181818);
+}
+
+.music-card h3 {
+    font-size: 17px;
+    margin: 15px 0 6px;
+}
+
+.music-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.artist-card img,
+.artist-card .placeholder {
+    border-radius: 50%;
+}
+
+.artist-card {
+    text-align: center;
+}
+
+.community {
+    margin: 50px 8%;
+    padding: 60px 30px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #202020, #30101c);
+}
+
+.community h2 {
+    font-size: 32px;
+    margin: 20px 0;
+}
+
+.community p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.error {
+    padding: 20px 8%;
+    color: #ff9aab;
+}
+
+footer {
+    padding: 30px 8%;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+footer p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vinyl {
+        right: -250px;
+        opacity: 0.25;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero {
+        min-height: 500px;
+        padding: 50px 6%;
+    }
+
+    .catalogue {
+        padding: 35px 6%;
+    }
+
+    .cards {
+        gap: 12px;
+    }
+
+    .section-header h2 {
+        font-size: 20px;
+    }
+
+    .music-card {
+        padding: 10px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}

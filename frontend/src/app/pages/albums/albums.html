@@ -1,0 +1,82 @@
+<section class="page">
+
+    <div class="page-heading">
+        <span class="eyebrow">Le catalogue MELO</span>
+
+        <h1>Explorez les <span>albums.</span></h1>
+
+        <p>
+            Retrouvez vos albums préférés et découvrez
+            de nouveaux univers musicaux.
+        </p>
+    </div>
+
+    <div class="filters">
+
+        <input
+            type="search"
+            class="search"
+            placeholder="Rechercher un album ou un artiste..."
+            aria-label="Rechercher un album ou un artiste"
+            (input)="recherche.set($any($event.target).value)"
+        >
+
+        <select
+            aria-label="Filtrer par genre"
+            (change)="genreSelectionne.set($any($event.target).value)"
+        >
+            <option value="">Tous les genres</option>
+
+            @for (genre of genres(); track genre) {
+                <option [value]="genre">{{ genre }}</option>
+            }
+
+        </select>
+
+    </div>
+
+    @if (chargement()) {
+        <p>Chargement des albums...</p>
+    } @else if (erreur()) {
+        <p class="error">{{ erreur() }}</p>
+    } @else {
+
+        <p class="results">
+            {{ albumsFiltres().length }} album(s)
+        </p>
+
+        <div class="cards">
+
+            @for (album of albumsFiltres(); track album.id_album) {
+
+                <article class="album-card">
+
+                    @if (album.pochette) {
+                        <img
+                            [src]="album.pochette"
+                            [alt]="album.titre_album"
+                            loading="lazy"
+                        >
+                    } @else {
+                        <div class="placeholder">♫</div>
+                    }
+
+                    <h2>{{ album.titre_album }}</h2>
+
+                    <p>{{ album.nom_artiste }}</p>
+
+                    <span class="genre">
+                        {{ album.nom_genre }}
+                    </span>
+
+                </article>
+
+            } @empty {
+                <p>Aucun album trouvé.</p>
+            }
+
+        </div>
+
+    }
+
+</section>
